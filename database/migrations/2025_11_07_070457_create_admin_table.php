@@ -9,7 +9,8 @@ return new class extends Migration
     public function up()
     {
         Schema::create('admin', function (Blueprint $table) {
-            $table->string('username', 50)->primary();
+            $table->id(); // 🧩 ini wajib, primary key integer autoincrement
+            $table->string('username', 50)->unique();
             $table->string('password');
             $table->string('nama', 100);
             $table->enum('status', ['tidak aktif', 'aktif'])->default('aktif');

@@ -129,5 +129,7 @@ class DatabaseSeeder extends Seeder
             'kode_kategori' => 'ATK',
             'kode_satuan' => 'KG'
         ]);
+
+        $this->call(UserSeeder::class);
     }
 }
