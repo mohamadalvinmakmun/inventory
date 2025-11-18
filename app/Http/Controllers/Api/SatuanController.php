@@ -72,6 +72,7 @@ class SatuanController extends Controller
         }
 
         $validator = Validator::make($request->all(), [
+            'kode_satuan' => 'required|unique:satuan',
             'nama_satuan' => 'required'
         ]);
 
