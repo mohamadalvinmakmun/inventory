@@ -14,10 +14,10 @@ class AdminController extends Controller
     public function index()
     {
         $admin = Admin::all();
-
         return response()->json([
             'success' => true,
-            'data' => $admin
+            // kirim data yang password nya udah ga di hash
+            'data' => $admin,
         ]);
     }
 
@@ -41,7 +41,7 @@ class AdminController extends Controller
 
         $admin = Admin::create([
             'username' => $request->username,
-            'password' => Hash::make($request->password),
+            'password' => $request->password,
             'nama' => $request->nama,
             'status' => $request->status,
             'level' => $request->level
@@ -104,7 +104,7 @@ class AdminController extends Controller
 
         // Jika password diupdate
         if ($request->has('password') && !empty($request->password)) {
-            $data['password'] = Hash::make($request->password);
+            $data['password'] = $request->password;
         }
 
         $admin->update($data);

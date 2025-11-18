@@ -30,7 +30,7 @@ class AuthController extends Controller
         if (!$admin || !Hash::check($request->password, $admin->password)) {
             return response()->json([
                 'success' => false,
-                'message' => 'Username atau password salah'
+                'message' => 'Username atau password salah',
             ], 401);
         }
 
@@ -41,6 +41,7 @@ class AuthController extends Controller
             ], 401);
         }
 
+
         $token = $admin->createToken('auth_token')->plainTextToken;
 
         return response()->json([
@@ -48,7 +49,7 @@ class AuthController extends Controller
             'message' => 'Login berhasil',
             'data' => [
                 'user' => $admin,
-                'token' => $token
+                'token' => $token,
             ]
         ]);
     }
